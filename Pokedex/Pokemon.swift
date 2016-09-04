@@ -9,8 +9,8 @@
 import Foundation
 
 class Pokemon {
-    private var _name: String!
-    private var _id: Int!
+    fileprivate var _name: String!
+    fileprivate var _id: Int!
     
     var name: String {
         return _name
@@ -21,7 +21,7 @@ class Pokemon {
     }
     
     init(name: String, id: Int) {
-        self._name = name
+        self._name = name.capitalized
         self._id = id
     }
 }
