@@ -5,6 +5,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="pokemon.ttf">
+            <string>PokemonSolidNormal</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--MainVC-->
         <scene sceneID="tne-QT-ifu">
@@ -19,8 +24,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hYj-aF-83E">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMu-rs-XUM">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="26" id="Leg-3N-pld"/>
+                                            <constraint firstAttribute="width" constant="26" id="RNt-ga-KjJ"/>
+                                        </constraints>
+                                        <state key="normal" image="music"/>
+                                        <connections>
+                                            <action selector="musicBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nkZ-6a-gCM"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pokedex" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYo-gx-e9A">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="118" id="e1G-MO-v8X"/>
+                                            <constraint firstAttribute="height" constant="30" id="fvF-Rz-qDh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="PokemonSolidNormal" family="Pokemon Solid" pointSize="22"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="1" green="0.34509803921568627" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="BMu-rs-XUM" secondAttribute="bottom" constant="8" id="1LZ-Xc-Ggo"/>
+                                    <constraint firstAttribute="bottom" secondItem="kYo-gx-e9A" secondAttribute="bottom" constant="8" id="COX-hi-HNa"/>
+                                    <constraint firstItem="kYo-gx-e9A" firstAttribute="centerX" secondItem="hYj-aF-83E" secondAttribute="centerX" id="Gch-PG-9IE"/>
+                                    <constraint firstAttribute="trailing" secondItem="BMu-rs-XUM" secondAttribute="trailing" constant="8" id="hGU-Mf-jbR"/>
                                     <constraint firstAttribute="height" constant="65" id="nCl-AI-1MK"/>
                                 </constraints>
                             </view>
@@ -108,5 +138,6 @@
     <resources>
         <image name="4" width="120" height="120"/>
         <image name="bg" width="1920" height="1200"/>
+        <image name="music" width="100" height="100"/>
     </resources>
 </document>
