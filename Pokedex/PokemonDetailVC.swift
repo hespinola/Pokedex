@@ -18,4 +18,8 @@ class PokemonDetailVC: UIViewController {
         super.viewDidLoad()
         nameLbl.text = pokemon.name
     }
+    
+    @IBAction func backBtnPressed(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
 }
