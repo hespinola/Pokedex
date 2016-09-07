@@ -21,7 +21,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hYj-aF-83E">
@@ -146,7 +146,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wMv-eV-anx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="J2n-tY-qCq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HGQ-0W-7gu">
@@ -207,19 +207,19 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="1Tt-va-Ywn">
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="zLF-Bz-56q">
-                                        <frame key="frameInset" width="288" height="24"/>
+                                        <frame key="frameInset" width="343" height="24"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="8CD-7j-L3L">
-                                                <frame key="frameInset" width="144" height="24"/>
+                                                <frame key="frameInset" width="172" height="24"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jl4-Zz-Jme">
-                                                        <frame key="frameInset" width="49" height="24"/>
+                                                        <frame key="frameInset" width="59" height="24"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                                         <color key="textColor" red="1" green="0.34509803919999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Poison/Grass" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ox1-L7-2T3">
-                                                        <frame key="frameInset" minX="49" width="95" height="24"/>
+                                                        <frame key="frameInset" minX="59" width="113" height="24"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -227,16 +227,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="DIc-Jf-p8E">
-                                                <frame key="frameInset" minX="144" width="144" height="24"/>
+                                                <frame key="frameInset" minX="172" width="172" height="24"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Pokedex ID:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wop-AD-uQ2">
-                                                        <frame key="frameInset" width="132" height="24"/>
+                                                        <frame key="frameInset" width="160" height="24"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                                         <color key="textColor" red="1" green="0.34509803919999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k9Z-NR-F9o">
-                                                        <frame key="frameInset" minX="137" width="7" height="24"/>
+                                                        <frame key="frameInset" minX="165" width="7" height="24"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -246,10 +246,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="8vL-Ut-soK">
-                                        <frame key="frameInset" minY="49" width="288" height="17"/>
+                                        <frame key="frameInset" minY="49" width="343" height="17"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dRz-8O-5Dh">
-                                                <frame key="frameInset" width="144" height="17"/>
+                                                <frame key="frameInset" width="172" height="17"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Hp:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fip-is-yrk">
                                                         <frame key="frameInset" width="23" height="17"/>
@@ -258,7 +258,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="65" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YoF-SO-fxh">
-                                                        <frame key="frameInset" minX="28" width="116" height="17"/>
+                                                        <frame key="frameInset" minX="28" width="144" height="17"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -266,7 +266,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ENd-s5-Sr6">
-                                                <frame key="frameInset" minX="144" width="144" height="17"/>
+                                                <frame key="frameInset" minX="172" width="172" height="17"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Attack:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fA0-QX-hve">
                                                         <frame key="frameInset" width="46" height="17"/>
@@ -275,7 +275,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="49" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5a-mC-rqT">
-                                                        <frame key="frameInset" minX="51" width="93" height="17"/>
+                                                        <frame key="frameInset" minX="51" width="121" height="17"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -285,10 +285,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="zB8-wZ-G1i">
-                                        <frame key="frameInset" minY="91" width="288" height="17"/>
+                                        <frame key="frameInset" minY="91" width="343" height="17"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="y7l-an-lbh">
-                                                <frame key="frameInset" width="144" height="17"/>
+                                                <frame key="frameInset" width="172" height="17"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Defense:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCz-6f-OHD">
                                                         <frame key="frameInset" width="58" height="17"/>
@@ -297,7 +297,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLe-Im-Y1x">
-                                                        <frame key="frameInset" minX="63" width="82" height="17"/>
+                                                        <frame key="frameInset" minX="63" width="109" height="17"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -305,7 +305,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="B9P-LQ-ynF">
-                                                <frame key="frameInset" minX="144" width="144" height="17"/>
+                                                <frame key="frameInset" minX="172" width="172" height="17"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Special Attack:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWY-HD-f2a">
                                                         <frame key="frameInset" width="98" height="17"/>
@@ -314,7 +314,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="49" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1GI-lQ-aZf">
-                                                        <frame key="frameInset" minX="103" width="42" height="17"/>
+                                                        <frame key="frameInset" minX="103" width="69" height="17"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -324,19 +324,19 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="8Gn-yT-kbd">
-                                        <frame key="frameInset" minY="133" width="288" height="17"/>
+                                        <frame key="frameInset" minY="133" width="343" height="17"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="ALb-GN-jdm">
-                                                <frame key="frameInset" width="144" height="17"/>
+                                                <frame key="frameInset" width="172" height="17"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Special Defense:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NWh-O1-f3O">
-                                                        <frame key="frameInset" width="128" height="17"/>
+                                                        <frame key="frameInset" width="153" height="17"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                                         <color key="textColor" red="1" green="0.34509803919999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QYT-wA-tKm">
-                                                        <frame key="frameInset" minX="128" width="16" height="17"/>
+                                                        <frame key="frameInset" minX="153" width="19" height="17"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -344,16 +344,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="j3L-B2-Vk2">
-                                                <frame key="frameInset" minX="144" width="144" height="17"/>
+                                                <frame key="frameInset" minX="172" width="172" height="17"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Speed:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UIQ-Wn-6FF">
-                                                        <frame key="frameInset" width="126" height="17"/>
+                                                        <frame key="frameInset" width="153" height="17"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                                         <color key="textColor" red="1" green="0.34509803919999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5V-RL-hd6">
-                                                        <frame key="frameInset" minX="131" width="14" height="17"/>
+                                                        <frame key="frameInset" minX="158" width="14" height="17"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -387,7 +387,17 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="atkLbl" destination="O5a-mC-rqT" id="iHM-UV-Bvu"/>
+                        <outlet property="defLbl" destination="MLe-Im-Y1x" id="bvh-hA-aQx"/>
+                        <outlet property="descriptionLbl" destination="77U-fg-kHn" id="Z2c-xl-De1"/>
+                        <outlet property="hpLbl" destination="YoF-SO-fxh" id="r0M-AK-HtO"/>
+                        <outlet property="idLbl" destination="k9Z-NR-F9o" id="BLS-VZ-ttU"/>
                         <outlet property="nameLbl" destination="7qU-4g-Xzq" id="CC8-mj-0Cq"/>
+                        <outlet property="pokeImg" destination="tAD-oQ-HR9" id="RlM-RG-zWS"/>
+                        <outlet property="spAtkLbl" destination="1GI-lQ-aZf" id="nPx-4r-0ti"/>
+                        <outlet property="spDefLbl" destination="QYT-wA-tKm" id="u1O-xT-hh9"/>
+                        <outlet property="speedLbl" destination="Z5V-RL-hd6" id="gCi-fb-4s1"/>
+                        <outlet property="typeLbl" destination="Ox1-L7-2T3" id="HwI-2k-0xw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gHH-8k-xt1" userLabel="First Responder" sceneMemberID="firstResponder"/>
