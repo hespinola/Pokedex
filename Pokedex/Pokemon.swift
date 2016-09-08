@@ -208,9 +208,9 @@ class Pokemon {
             if let evolutions = dict?["evolutions"] as? [Dictionary<String, AnyObject>] , evolutions.count > 0 {
                 
                 if let nextEvolution = evolutions[0]["to"] as? String {
-                    evolutionString = "Next Evolution: \(nextEvolution)"
-                    
+
                     if nextEvolution.range(of: "mega") == nil {
+                        evolutionString = "Next Evolution: \(nextEvolution)"
                         if let uri = evolutions[0]["resource_uri"] as? String {
                             let newStr = uri.replacingOccurrences(of: "/api/v1/pokemon/", with: "")
                             let nextEvoId = newStr.replacingOccurrences(of: "/", with: "")
@@ -222,10 +222,12 @@ class Pokemon {
                                 evolutionString = "\(evolutionString) at LVL: \(lvl)"
                             }
                         }
+                    } else {
+                        evolutionString = "No Evolutions"
                     }
+                } else {
+                    evolutionString = "No Evolutions"
                 }
-            } else {
-                evolutionString = "No Evolutions"
             }
             self.nextEvo = evolutionString
             

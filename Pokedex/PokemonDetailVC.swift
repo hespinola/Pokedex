@@ -31,6 +31,7 @@ class PokemonDetailVC: UIViewController {
         super.viewDidLoad()
         nameLbl.text = pokemon.name
         pokeImg.image = UIImage(named: "\(pokemon.id)")
+        currentEvo.image = UIImage(named: "\(pokemon.id)")
         idLbl.text = "\(pokemon.id)"
         
         pokemon.downloadData {
@@ -47,7 +48,6 @@ class PokemonDetailVC: UIViewController {
         spAtkLbl.text = "\(pokemon.spcAtk)"
         speedLbl.text = "\(pokemon.speed)"
         descriptionLbl.text = pokemon.description
-        currentEvo.image = UIImage(named: "\(pokemon.id)")
         nextEvolutionImg.image = UIImage(named: pokemon.nextEvoId)
         nextEvolutionLbl.text = pokemon.nextEvo
     }
