@@ -20,6 +20,32 @@ class Pokemon {
     private var _hp: Int!
     private var _type: String!
     private var _description: String!
+    private var _nextEvo: String!
+    private var _nextEvoId: String!
+    
+    var nextEvoId: String {
+        get {
+            if _nextEvoId == nil {
+                return ""
+            } else {
+                return self._nextEvoId
+            }
+        } set {
+            self._nextEvoId = newValue
+        }
+    }
+    
+    var nextEvo: String {
+        get {
+            if _nextEvo == nil {
+                return ""
+            } else {
+                return _nextEvo
+            }
+        } set {
+            self._nextEvo = newValue
+        }
+    }
     
     var hp: Int {
         get {
@@ -134,7 +160,7 @@ class Pokemon {
         let url = "\(BASE_URL)\(POKEMON_REQUEST)\(self.id)/"
         print(url)
         
-        Alamofire.request(url, withMethod: .get).responseJSON { response in
+        Alamofire.request(url, withMethod: .get).responseJSON(completionHandler: { (response) in
             let dict = response.result.value! as? Dictionary<String, AnyObject>
             
             if let hp = dict?["hp"] as? Int {
@@ -177,23 +203,50 @@ class Pokemon {
                 self.type = type
             }
             
+            // Evolution
+            var evolutionString = ""
+            if let evolutions = dict?["evolutions"] as? [Dictionary<String, AnyObject>] , evolutions.count > 0 {
+                
+                if let nextEvolution = evolutions[0]["to"] as? String {
+                    evolutionString = "Next Evolution: \(nextEvolution)"
+                    
+                    if nextEvolution.range(of: "mega") == nil {
+                        if let uri = evolutions[0]["resource_uri"] as? String {
+                            let newStr = uri.replacingOccurrences(of: "/api/v1/pokemon/", with: "")
+                            let nextEvoId = newStr.replacingOccurrences(of: "/", with: "")
+                            self.nextEvoId = nextEvoId
+                        }
+                        
+                        if let lvlExists = evolutions[0]["level"] {
+                            if let lvl = lvlExists as? Int {
+                                evolutionString = "\(evolutionString) at LVL: \(lvl)"
+                            }
+                        }
+                    }
+                }
+            } else {
+                evolutionString = "No Evolutions"
+            }
+            self.nextEvo = evolutionString
+            
             // Description
             if let descriptions = dict?["descriptions"] as? [Dictionary<String, AnyObject>] {
                 if let descUrl = descriptions[0]["resource_uri"] as? String {
                     
-                    Alamofire.request("\(BASE_URL)\(descUrl)", withMethod: .get).responseJSON { response in
+                    Alamofire.request("\(BASE_URL)\(descUrl)", withMethod: .get).responseJSON(completionHandler: { (response) in
                         
                         let descDict = response.result.value as? Dictionary<String, AnyObject>
                         
-                        if let description = descDict?["description"] as? String {
-                            self.description = description
+                        if let desc = descDict?["description"] as? String {
+                            let newDesc = desc.replacingOccurrences(of: "POKMON", with: "Pokemon")
+                            self.description = newDesc
                         }
-                    }
-                    completed()
+                        
+                        completed()
+                    })
                 }
             }
-        }
-        
-        completed()
+            completed()
+        })
     }
 }
