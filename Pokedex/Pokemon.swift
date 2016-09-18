@@ -156,11 +156,11 @@ class Pokemon {
         self._id = id
     }
     
-    func downloadData(completed: downloadComplete) {
+    func downloadData(completed: @escaping downloadComplete) {
         let url = "\(BASE_URL)\(POKEMON_REQUEST)\(self.id)/"
         print(url)
         
-        Alamofire.request(url, withMethod: .get).responseJSON(completionHandler: { (response) in
+        Alamofire.request(url, method: .get).responseJSON(completionHandler: { (response) in
             let dict = response.result.value! as? Dictionary<String, AnyObject>
             
             if let hp = dict?["hp"] as? Int {
@@ -235,7 +235,7 @@ class Pokemon {
             if let descriptions = dict?["descriptions"] as? [Dictionary<String, AnyObject>] {
                 if let descUrl = descriptions[0]["resource_uri"] as? String {
                     
-                    Alamofire.request("\(BASE_URL)\(descUrl)", withMethod: .get).responseJSON(completionHandler: { (response) in
+                    Alamofire.request("\(BASE_URL)\(descUrl)", method: .get).responseJSON(completionHandler: { (response) in
                         
                         let descDict = response.result.value as? Dictionary<String, AnyObject>
                         
