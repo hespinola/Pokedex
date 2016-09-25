@@ -78,7 +78,7 @@ class Pokemon {
     private var _nextEvo: String!
     private var _nextEvoId: String!
     
-    var movement: [Movement]!
+    var movement = [Movement]()
     
     var nextEvoId: String {
         get {
@@ -307,19 +307,38 @@ class Pokemon {
             // Movements
             let movementURL = "\(BASE_URL)\(MOVEMENT_REQUEST)\(self.id)/"
             Alamofire.request(movementURL, method: .get).responseJSON(completionHandler: { (response) in
-                let moveDict = response.result.value as? Dictionary<String, AnyObject>
+                let movementsDict = response.result.value as? Dictionary<String, AnyObject>
                 
-                if let moves = moveDict?["moves"] as? [Dictionary<String, AnyObject>] , moves.count > 0 {
+                if let moves = movementsDict?["moves"] as? [Dictionary<String, AnyObject>] , moves.count > 0 {
                     for move in moves {
+
                         let newMove = Movement()
-                        
-                        if let moveURL = move["url"] as? String {
-                            newMove.URL = moveURL
+                        if let moveDetail = move["move"] as? Dictionary<String, AnyObject> {
+                            if let moveURL = moveDetail["url"] as? String {
+                                newMove.URL = moveURL
+                                Alamofire.request(moveURL, method: .get).responseJSON(completionHandler: { (response) in
+                                    
+                                    let moveDict = response.result.value as? Dictionary<String, AnyObject>
+                                    
+                                    if let pp = moveDict?["pp"] as? Int {
+                                        newMove.pp = pp
+                                    }
+                                    
+                                    if let type = moveDict?["type"] as? Dictionary<String, AnyObject> {
+                                        if let typeName = type["name"] as? String {
+                                            newMove.type = typeName
+                                        }
+                                    }
+                                    
+                                    completed()
+                                })
+                            }
+                            
+                            if let moveName = moveDetail["name"] as? String {
+                                newMove.name = moveName
+                            }
                         }
-                        
-                        if let moveName = move["name"] as? String {
-                            newMove.name = moveName
-                        }
+                        self.movement.append(newMove)
                     }
                 }
                 completed()

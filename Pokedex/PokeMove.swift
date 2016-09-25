@@ -10,7 +10,7 @@ import UIKit
 
 class PokeMove: UITableViewCell {
     
-    var pokemon: Pokemon!
+    var movement: Movement!
     
     @IBOutlet weak var movementNameLbl: UILabel!
     @IBOutlet weak var movementTypeLbl: UILabel!
@@ -19,6 +19,12 @@ class PokeMove: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    func updateUI() {
+        movementNameLbl.text = movement.name.capitalized
+        movementTypeLbl.text = movement.type.capitalized
+        ppLbl.text = "\(movement.pp)"
     }
 
 }

@@ -34,15 +34,16 @@ class PokemonDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var currentEvo: UIImageView!
     @IBOutlet weak var nextEvolutionImg: UIImageView!
     @IBOutlet weak var divider: UITableView!
-    @IBOutlet weak var movementTable: UITableView!
     
     var pokemon: Pokemon!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        movementTable.delegate = self
-        movementTable.dataSource = self
+        divider.isHidden = true
+        
+        divider.delegate = self
+        divider.dataSource = self
         
         nameLbl.text = pokemon.name
         pokeImg.image = UIImage(named: "\(pokemon.id)")
@@ -51,6 +52,7 @@ class PokemonDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         pokemon.downloadData {
             self.updateUI()
+            self.divider.reloadData()
         }
     }
     
@@ -92,9 +94,8 @@ class PokemonDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             spAtk.isHidden = false
             spDef.isHidden = false
             speed.isHidden = false
-            divider.isHidden = false
             
-            movementTable.isHidden = true
+            divider.isHidden = true
         }
         
         if segmentedController.selectedSegmentIndex == 1 {
@@ -120,9 +121,8 @@ class PokemonDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             spAtk.isHidden = true
             spDef.isHidden = true
             speed.isHidden = true
-            divider.isHidden = true
             
-            movementTable.isHidden = false
+            divider.isHidden = false
         }
     }
     
@@ -135,10 +135,18 @@ class PokemonDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return pokemon.movement.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "PokeMove") as? PokeMove {
+            
+            cell.movement = pokemon.movement[indexPath.row]
+            cell.updateUI()
+            return cell
+            
+        } else {
+            return UITableViewCell()
+        }
     }
 }
