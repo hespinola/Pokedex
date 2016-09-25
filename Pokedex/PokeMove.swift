@@ -9,12 +9,16 @@
 import UIKit
 
 class PokeMove: UITableViewCell {
+    
+    var pokemon: Pokemon!
+    
+    @IBOutlet weak var movementNameLbl: UILabel!
+    @IBOutlet weak var movementTypeLbl: UILabel!
+    @IBOutlet weak var ppLbl: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-    
-    
 
 }

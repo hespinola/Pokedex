@@ -9,6 +9,61 @@
 import Foundation
 import Alamofire
 
+class Movement {
+    private var _name: String!
+    private var _type: String!
+    private var _URL: String!
+    private var _pp: Int!
+    
+    var URL: String {
+        get {
+            if _URL == nil {
+                return ""
+            } else {
+                return _URL
+            }
+        } set {
+            _URL = newValue
+        }
+    }
+    
+    var name: String {
+        get {
+            if _name == nil {
+                return ""
+            } else {
+                return _name
+            }
+        } set {
+            _name = newValue
+        }
+    }
+    
+    var type: String {
+        get {
+            if _type == nil {
+                return ""
+            } else {
+                return _type
+            }
+        } set {
+            _type = newValue
+        }
+    }
+    
+    var pp: Int {
+        get {
+            if _pp == nil {
+                return 0
+            } else {
+                return _pp
+            }
+        } set {
+            _pp = newValue
+        }
+    }
+}
+
 class Pokemon {
     private var _name: String!
     private var _id: Int!
@@ -22,6 +77,8 @@ class Pokemon {
     private var _description: String!
     private var _nextEvo: String!
     private var _nextEvoId: String!
+    
+    var movement: [Movement]!
     
     var nextEvoId: String {
         get {
@@ -158,7 +215,6 @@ class Pokemon {
     
     func downloadData(completed: @escaping downloadComplete) {
         let url = "\(BASE_URL)\(POKEMON_REQUEST)\(self.id)/"
-        print(url)
         
         Alamofire.request(url, method: .get).responseJSON(completionHandler: { (response) in
             let dict = response.result.value! as? Dictionary<String, AnyObject>
@@ -248,6 +304,27 @@ class Pokemon {
                     })
                 }
             }
+            // Movements
+            let movementURL = "\(BASE_URL)\(MOVEMENT_REQUEST)\(self.id)/"
+            Alamofire.request(movementURL, method: .get).responseJSON(completionHandler: { (response) in
+                let moveDict = response.result.value as? Dictionary<String, AnyObject>
+                
+                if let moves = moveDict?["moves"] as? [Dictionary<String, AnyObject>] , moves.count > 0 {
+                    for move in moves {
+                        let newMove = Movement()
+                        
+                        if let moveURL = move["url"] as? String {
+                            newMove.URL = moveURL
+                        }
+                        
+                        if let moveName = move["name"] as? String {
+                            newMove.name = moveName
+                        }
+                    }
+                }
+                completed()
+            })
+            
             completed()
         })
     }
