@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -190,6 +190,9 @@
                                     <segment title="Moves"/>
                                 </segments>
                                 <color key="tintColor" red="1" green="0.34509803919999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="segmentedChange:" destination="IYi-fQ-9Vw" eventType="valueChanged" id="kJ6-Xz-OMP"/>
+                                </connections>
                             </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Qla-wk-XQa">
                                 <subviews>
@@ -398,6 +401,21 @@
                                     </imageView>
                                 </subviews>
                             </stackView>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xur-2c-AvT">
+                                <frame key="frameInset" minY="129" width="375" height="538"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MoveCell" id="9DL-09-JbD">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9DL-09-JbD" id="IlF-SQ-b4s">
+                                            <frame key="frameInset" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -444,43 +462,54 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="iXB-c2-lex"/>
                                 <exclude reference="jin-ma-apQ"/>
                                 <exclude reference="rHr-R6-fUa"/>
-                                <exclude reference="Yaj-3Y-yPa"/>
+                                <exclude reference="rFH-fS-qix"/>
                                 <exclude reference="Rxb-mL-C2r"/>
                                 <exclude reference="o89-3f-uHs"/>
-                                <exclude reference="iXB-c2-lex"/>
-                                <exclude reference="rFH-fS-qix"/>
                                 <exclude reference="kDe-Lr-8Rm"/>
+                                <exclude reference="Yaj-3Y-yPa"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
                             <mask key="constraints">
+                                <include reference="iXB-c2-lex"/>
                                 <include reference="jin-ma-apQ"/>
                                 <include reference="rHr-R6-fUa"/>
-                                <include reference="Yaj-3Y-yPa"/>
+                                <include reference="rFH-fS-qix"/>
                                 <include reference="Rxb-mL-C2r"/>
                                 <include reference="o89-3f-uHs"/>
-                                <include reference="iXB-c2-lex"/>
-                                <include reference="rFH-fS-qix"/>
                                 <include reference="kDe-Lr-8Rm"/>
+                                <include reference="Yaj-3Y-yPa"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="atk" destination="fA0-QX-hve" id="38E-q5-jKA"/>
                         <outlet property="atkLbl" destination="O5a-mC-rqT" id="iHM-UV-Bvu"/>
                         <outlet property="currentEvo" destination="T9R-bz-XNQ" id="bbT-7C-TNC"/>
+                        <outlet property="def" destination="ZCz-6f-OHD" id="aDn-nB-iVr"/>
                         <outlet property="defLbl" destination="MLe-Im-Y1x" id="bvh-hA-aQx"/>
                         <outlet property="descriptionLbl" destination="77U-fg-kHn" id="Z2c-xl-De1"/>
+                        <outlet property="divider" destination="Xur-2c-AvT" id="bGt-AG-V36"/>
+                        <outlet property="hp" destination="fip-is-yrk" id="QWq-JI-xuR"/>
                         <outlet property="hpLbl" destination="YoF-SO-fxh" id="r0M-AK-HtO"/>
                         <outlet property="idLbl" destination="k9Z-NR-F9o" id="BLS-VZ-ttU"/>
+                        <outlet property="movementTable" destination="Xur-2c-AvT" id="E0n-Hy-QEM"/>
                         <outlet property="nameLbl" destination="7qU-4g-Xzq" id="CC8-mj-0Cq"/>
                         <outlet property="nextEvolutionImg" destination="yh5-sw-dhh" id="z23-r3-Ept"/>
                         <outlet property="nextEvolutionLbl" destination="RPs-2e-fkF" id="hEA-ss-BrU"/>
                         <outlet property="pokeImg" destination="tAD-oQ-HR9" id="RlM-RG-zWS"/>
+                        <outlet property="pokedexID" destination="Wop-AD-uQ2" id="lAN-il-ert"/>
+                        <outlet property="segmentedController" destination="a1p-yI-B5g" id="RFt-mN-dV4"/>
+                        <outlet property="spAtk" destination="PWY-HD-f2a" id="K28-CL-x9s"/>
                         <outlet property="spAtkLbl" destination="1GI-lQ-aZf" id="nPx-4r-0ti"/>
+                        <outlet property="spDef" destination="NWh-O1-f3O" id="7U4-7j-xdf"/>
                         <outlet property="spDefLbl" destination="QYT-wA-tKm" id="u1O-xT-hh9"/>
+                        <outlet property="speed" destination="UIQ-Wn-6FF" id="OgM-Qr-ThM"/>
                         <outlet property="speedLbl" destination="Z5V-RL-hd6" id="gCi-fb-4s1"/>
+                        <outlet property="type" destination="Jl4-Zz-Jme" id="ah4-8Q-Cvo"/>
                         <outlet property="typeLbl" destination="Ox1-L7-2T3" id="HwI-2k-0xw"/>
                     </connections>
                 </viewController>

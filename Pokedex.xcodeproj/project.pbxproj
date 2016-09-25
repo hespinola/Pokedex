@@ -20,6 +20,7 @@
 		F45F51741D7BFF1D000C2A18 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F51731D7BFF1D000C2A18 /* Pokemon.swift */; };
 		F45F51761D7C08AD000C2A18 /* pokemon.csv in Resources */ = {isa = PBXBuildFile; fileRef = F45F51751D7C08AD000C2A18 /* pokemon.csv */; };
 		F45F517A1D7C0AAA000C2A18 /* PokeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F51791D7C0AAA000C2A18 /* PokeCell.swift */; };
+		F4B3A5EE1D94DA8F00753A59 /* PokeMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B3A5ED1D94DA8F00753A59 /* PokeMove.swift */; };
 		F4F932CC1D7E559D002D3019 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F932CB1D7E559D002D3019 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		F45F51731D7BFF1D000C2A18 /* Pokemon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		F45F51751D7C08AD000C2A18 /* pokemon.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pokemon.csv; sourceTree = "<group>"; };
 		F45F51791D7C0AAA000C2A18 /* PokeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokeCell.swift; sourceTree = "<group>"; };
+		F4B3A5ED1D94DA8F00753A59 /* PokeMove.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokeMove.swift; sourceTree = "<group>"; };
 		F4F932CB1D7E559D002D3019 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				F45F51791D7C0AAA000C2A18 /* PokeCell.swift */,
+				F4B3A5ED1D94DA8F00753A59 /* PokeMove.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				F4F932CC1D7E559D002D3019 /* Constants.swift in Sources */,
 				F45F51741D7BFF1D000C2A18 /* Pokemon.swift in Sources */,
 				F448BCD81D7CBBEB00E754A5 /* csv.swift in Sources */,
+				F4B3A5EE1D94DA8F00753A59 /* PokeMove.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
