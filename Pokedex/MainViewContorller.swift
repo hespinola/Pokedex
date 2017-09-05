@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+class MainViewController: UIViewController {
 
     
     // MARK: - UI Elements
@@ -17,10 +17,10 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var searchBar: UISearchBar!
     
     // MARK: - Class Properties
-    private var pokemons = [Pokemon]()
-    private var filteredPokemons = [Pokemon]()
+    fileprivate var pokemons = [Pokemon]()
+    fileprivate var filteredPokemons = [Pokemon]()
+    fileprivate var inSearchMode = false
     private var musicPlayer: AVAudioPlayer!
-    private var inSearchMode = false
     
     // MARK: - View Controller Life Cycle
     override func viewDidLoad() {
@@ -63,7 +63,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
             musicPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
             musicPlayer.prepareToPlay()
             musicPlayer.numberOfLoops = -1
-            //musicPlayer.play()
+            musicPlayer.play()
         } catch let err as NSError {
             print(err.debugDescription)
         }
@@ -88,7 +88,30 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
-    // Collection View Functions
+    func musicButtonPressed(sender: UIBarButtonItem) {
+        if musicPlayer.isPlaying {
+            musicPlayer.stop()
+            sender.tintColor = UIColor.white.withAlphaComponent(0.7)
+        } else {
+            musicPlayer.play()
+            sender.tintColor = UIColor.white.withAlphaComponent(1.0)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PokemonDetailVC" {
+            if let detailVC = segue.destination as? PokemonDetailVC {
+                if let pokemon = sender as? Pokemon {
+                    detailVC.pokemon = pokemon
+                }
+            }
+        }
+    }
+}
+
+
+// MARK: - Collection View Data Source and Delegate
+extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PokeCell", for: indexPath) as? PokeCell {
@@ -133,10 +156,14 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 105, height: 105)
+        
+        return ITEM_SIZE
     }
-    
-    // Search Bar Functions
+}
+
+// MARK: - Search Bar Delegate
+extension MainViewController: UISearchBarDelegate {
+
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text == "" {
             self.inSearchMode = false
@@ -154,38 +181,4 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
     }
-    
-    func musicButtonPressed(sender: UIBarButtonItem) {
-        if musicPlayer.isPlaying {
-            musicPlayer.stop()
-            
-        } else {
-            musicPlayer.play()
-            //sender.alpha = 1.0
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "PokemonDetailVC" {
-            if let detailVC = segue.destination as? PokemonDetailVC {
-                if let pokemon = sender as? Pokemon {
-                    detailVC.pokemon = pokemon
-                }
-            }
-        }
-    }
-    
-    // IBActions
-    @IBAction func musicBtnPressed(_ sender: UIButton) {
-        if musicPlayer.isPlaying {
-            musicPlayer.stop()
-            sender.alpha = 0.5
-        } else {
-            musicPlayer.play()
-            //sender.alpha = 1.0
-        }
-    }
 }
-
-
-
