@@ -11,19 +11,43 @@ import AVFoundation
 
 class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
 
+    
+    // MARK: - UI Elements
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var pokemons = [Pokemon]()
-    var filteredPokemons = [Pokemon]()
-    var musicPlayer: AVAudioPlayer!
-    var inSearchMode = false
+    // MARK: - Class Properties
+    private var pokemons = [Pokemon]()
+    private var filteredPokemons = [Pokemon]()
+    private var musicPlayer: AVAudioPlayer!
+    private var inSearchMode = false
     
+    // MARK: - View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Configure Navigation Bar
+        guard let fontTitle = UIFont(name: "Pokemon Solid", size: 22) else { fatalError("Wrong font.") }
+        
+        self.navigationItem.title = APP_NAME
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            NSForegroundColorAttributeName: UIColor.white,
+            NSFontAttributeName: fontTitle
+        ]
+        
+        let musicButton = UIBarButtonItem(image: UIImage(named: "music"), style: .plain, target: self, action: #selector(musicButtonPressed(sender:)))
+        musicButton.tintColor = UIColor.white
+        musicButton.imageInsets = UIEdgeInsetsMake(35, 70, 35, 0)
+        
+        self.navigationItem.rightBarButtonItem = musicButton
+        
+        // Configure Collection View
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        
+        // Configure Search Bar
         searchBar.delegate = self
         searchBar.returnKeyType = .done
         
@@ -31,6 +55,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         initAudio()
     }
     
+    // MARK: - Class Methods
     func initAudio() {
         let path = Bundle.main.path(forResource: "music", ofType: "mp3")!
         
@@ -38,7 +63,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
             musicPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
             musicPlayer.prepareToPlay()
             musicPlayer.numberOfLoops = -1
-            musicPlayer.play()
+            //musicPlayer.play()
         } catch let err as NSError {
             print(err.debugDescription)
         }
@@ -130,6 +155,16 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         view.endEditing(true)
     }
     
+    func musicButtonPressed(sender: UIBarButtonItem) {
+        if musicPlayer.isPlaying {
+            musicPlayer.stop()
+            
+        } else {
+            musicPlayer.play()
+            //sender.alpha = 1.0
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PokemonDetailVC" {
             if let detailVC = segue.destination as? PokemonDetailVC {
@@ -141,15 +176,16 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     // IBActions
-
     @IBAction func musicBtnPressed(_ sender: UIButton) {
         if musicPlayer.isPlaying {
             musicPlayer.stop()
             sender.alpha = 0.5
         } else {
             musicPlayer.play()
-            sender.alpha = 1.0
+            //sender.alpha = 1.0
         }
     }
 }
+
+
 

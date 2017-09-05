@@ -429,10 +429,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gkj-iV-A7c">
-                                                    <rect key="frame" x="8" y="13" width="27000000021" height="9000000000"/>
+                                                    <rect key="frame" x="8" y="13" width="10800021" height="3600000"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R59-Vi-nw1">
-                                                            <rect key="frame" x="0.0" y="0.0" width="9000000000" height="9000000000"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="3600000" height="3600000"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="17" id="3C5-GR-m1P"/>
                                                                 <constraint firstAttribute="width" constant="150" id="IEx-Nt-Asw"/>
@@ -442,7 +442,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5mz-jg-D3A">
-                                                            <rect key="frame" x="9000000000" y="0.0" width="9000000000" height="9000000000"/>
+                                                            <rect key="frame" x="3600000" y="0.0" width="3600000" height="3600000"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="25200" id="Fkm-kI-2nI"/>
                                                                 <constraint firstAttribute="width" constant="70" id="QUs-gX-uZu"/>
@@ -454,7 +454,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="PP:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dLg-MF-FYE">
-                                                            <rect key="frame" x="18000000000" y="0.0" width="21" height="9000000000"/>
+                                                            <rect key="frame" x="7200000" y="0.0" width="21" height="3600000"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="40" id="8ty-Yr-9vC"/>
                                                                 <constraint firstAttribute="width" constant="40" id="bSN-F1-729"/>
@@ -465,7 +465,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zfj-ih-UIP">
-                                                            <rect key="frame" x="18000000021" y="0.0" width="9000000000" height="9000000000"/>
+                                                            <rect key="frame" x="7200021" y="0.0" width="3600000" height="3600000"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="67" id="9nc-pf-BkY"/>
                                                                 <constraint firstAttribute="width" constant="24120" id="A5Q-lp-TKz"/>
@@ -547,8 +547,8 @@
                                 <exclude reference="jin-ma-apQ"/>
                                 <exclude reference="rHr-R6-fUa"/>
                                 <exclude reference="Rxb-mL-C2r"/>
-                                <exclude reference="o89-3f-uHs"/>
                                 <exclude reference="Yaj-3Y-yPa"/>
+                                <exclude reference="o89-3f-uHs"/>
                                 <exclude reference="rFH-fS-qix"/>
                                 <exclude reference="iXB-c2-lex"/>
                                 <exclude reference="kDe-Lr-8Rm"/>
@@ -559,8 +559,8 @@
                                 <include reference="jin-ma-apQ"/>
                                 <include reference="rHr-R6-fUa"/>
                                 <include reference="Rxb-mL-C2r"/>
-                                <include reference="o89-3f-uHs"/>
                                 <include reference="Yaj-3Y-yPa"/>
+                                <include reference="o89-3f-uHs"/>
                                 <include reference="rFH-fS-qix"/>
                                 <include reference="iXB-c2-lex"/>
                                 <include reference="kDe-Lr-8Rm"/>
