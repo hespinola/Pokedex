@@ -28,6 +28,7 @@ class MainViewController: UIViewController {
         
         // Configure Navigation Bar        
         self.navigationItem.title = APP_NAME
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.navigationBar.titleTextAttributes = [
             NSForegroundColorAttributeName: UIColor.white,
             NSFontAttributeName: AppStyles.Font.Title
@@ -95,16 +96,6 @@ class MainViewController: UIViewController {
             sender.tintColor = UIColor.white.withAlphaComponent(1.0)
         }
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "PokemonDetailVC" {
-            if let detailVC = segue.destination as? PokemonDetailVC {
-                if let pokemon = sender as? Pokemon {
-                    detailVC.pokemon = pokemon
-                }
-            }
-        }
-    }
 }
 
 
@@ -150,7 +141,11 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             pokemon = pokemons[indexPath.row]
         }
         
-        performSegue(withIdentifier: "PokemonDetailVC", sender: pokemon)
+        if let pokemonDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "PokemonDetailViewController") as? PokemonDetailViewController {
+            
+            pokemonDetailViewController.pokemon = pokemon
+            self.navigationController?.pushViewController(pokemonDetailViewController, animated: true)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

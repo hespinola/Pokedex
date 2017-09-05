@@ -9,100 +9,17 @@
 import Foundation
 import Alamofire
 
-class Movement {
-    private var _name: String!
-    private var _type: String!
-    private var _URL: String!
-    private var _pp: Int!
-    
-    var URL: String {
-        get {
-            if _URL == nil {
-                return ""
-            } else {
-                return _URL
-            }
-        } set {
-            _URL = newValue
-        }
-    }
-    
-    var name: String {
-        get {
-            if _name == nil {
-                return ""
-            } else {
-                return _name
-            }
-        } set {
-            _name = newValue
-        }
-    }
-    
-    var type: String {
-        get {
-            if _type == nil {
-                return ""
-            } else {
-                return _type
-            }
-        } set {
-            _type = newValue
-        }
-    }
-    
-    var pp: Int {
-        get {
-            if _pp == nil {
-                return 0
-            } else {
-                return _pp
-            }
-        } set {
-            _pp = newValue
-        }
-    }
-}
-
 class Pokemon {
     private var _name: String!
     private var _id: Int!
     private var _attack: Int!
     private var _defense: Int!
-    private var _spcAtk: Int!
-    private var _spcDef: Int!
+    private var _specialAttack: Int!
+    private var _specialDefense: Int!
     private var _speed: Int!
     private var _hp: Int!
     private var _type: String!
     private var _description: String!
-    private var _nextEvo: String!
-    private var _nextEvoId: String!
-    
-    var movement = [Movement]()
-    
-    var nextEvoId: String {
-        get {
-            if _nextEvoId == nil {
-                return ""
-            } else {
-                return self._nextEvoId
-            }
-        } set {
-            self._nextEvoId = newValue
-        }
-    }
-    
-    var nextEvo: String {
-        get {
-            if _nextEvo == nil {
-                return ""
-            } else {
-                return _nextEvo
-            }
-        } set {
-            self._nextEvo = newValue
-        }
-    }
     
     var hp: Int {
         get {
@@ -140,27 +57,27 @@ class Pokemon {
         }
     }
     
-    var spcAtk: Int {
+    var specialAttack: Int {
         get {
-            if _spcAtk == nil {
+            if _specialAttack == nil {
                 return 0
             } else {
-                return _spcAtk
+                return _specialAttack
             }
         } set {
-            self._spcAtk = newValue
+            self._specialAttack = newValue
         }
     }
     
-    var spcDef: Int {
+    var specialDefense: Int {
         get {
-            if _spcDef == nil {
+            if _specialDefense == nil {
                 return 0
             } else {
-                return _spcDef
+                return _specialDefense
             }
         } set {
-            self._spcDef = newValue
+            self._specialDefense = newValue
         }
     }
     
@@ -213,138 +130,90 @@ class Pokemon {
         self._id = id
     }
     
-    func downloadData(completed: @escaping downloadComplete) {
+    func downloadData(completion: @escaping() -> Void) {
         let url = "\(BASE_URL)\(POKEMON_REQUEST)\(self.id)/"
         
         Alamofire.request(url, method: .get).responseJSON(completionHandler: { (response) in
-            let dict = response.result.value! as? Dictionary<String, AnyObject>
-            
-            if let hp = dict?["hp"] as? Int {
-                self.hp = hp
-            }
-            
-            if let attack = dict?["attack"] as? Int {
-                self.attack = attack
-            }
-            
-            if let defense = dict?["defense"] as? Int {
-                self.defense = defense
-            }
-            
-            if let spAtk = dict?["sp_atk"] as? Int {
-                self.spcAtk = spAtk
-            }
-            
-            if let spDef = dict?["sp_def"] as? Int {
-                self.spcDef = spDef
-            }
-            
-            if let speed = dict?["speed"] as? Int {
-                self.speed = speed
-            }
-            
-            if let types = dict?["types"] as? [Dictionary<String, AnyObject>] , types.count > 0 {
-                var type = ""
+            if let dict = response.result.value! as? Dictionary<String, AnyObject> {
                 
-                if let type1 = types[0]["name"] as? String {
-                    type = type1.capitalized
-                }
-                
-                if types.count > 1 {
-                    if let type2 = types[1]["name"] as? String {
-                        type = "\(type)/\(type2.capitalized)"
-                    }
-                }
-                
-                self.type = type
-            }
-            
-            // Evolution
-            var evolutionString = ""
-            if let evolutions = dict?["evolutions"] as? [Dictionary<String, AnyObject>] , evolutions.count > 0 {
-                
-                if let nextEvolution = evolutions[0]["to"] as? String {
-
-                    if nextEvolution.range(of: "mega") == nil {
-                        evolutionString = "Next Evolution: \(nextEvolution)"
-                        if let uri = evolutions[0]["resource_uri"] as? String {
-                            let newStr = uri.replacingOccurrences(of: "/api/v1/pokemon/", with: "")
-                            let nextEvoId = newStr.replacingOccurrences(of: "/", with: "")
-                            self.nextEvoId = nextEvoId
-                        }
-                        
-                        if let lvlExists = evolutions[0]["level"] {
-                            if let lvl = lvlExists as? Int {
-                                evolutionString = "\(evolutionString) at LVL: \(lvl)"
-                            }
-                        }
-                    } else {
-                        evolutionString = "No Evolutions"
-                    }
-                } else {
-                    evolutionString = "No Evolutions"
-                }
-            }
-            self.nextEvo = evolutionString
-            
-            // Description
-            if let descriptions = dict?["descriptions"] as? [Dictionary<String, AnyObject>] {
-                if let descUrl = descriptions[0]["resource_uri"] as? String {
+                if let types = dict["types"] as? [Dictionary<String, AnyObject>] {
                     
-                    Alamofire.request("\(BASE_URL)\(descUrl)", method: .get).responseJSON(completionHandler: { (response) in
+                    var typeName = ""
+                    
+                    for type in types {
                         
-                        let descDict = response.result.value as? Dictionary<String, AnyObject>
-                        
-                        if let desc = descDict?["description"] as? String {
-                            let newDesc = desc.replacingOccurrences(of: "POKMON", with: "Pokemon")
-                            self.description = newDesc
-                        }
-                        
-                        completed()
-                    })
-                }
-            }
-            // Movements
-            let movementURL = "\(BASE_URL)\(MOVEMENT_REQUEST)\(self.id)/"
-            Alamofire.request(movementURL, method: .get).responseJSON(completionHandler: { (response) in
-                let movementsDict = response.result.value as? Dictionary<String, AnyObject>
-                
-                if let moves = movementsDict?["moves"] as? [Dictionary<String, AnyObject>] , moves.count > 0 {
-                    for move in moves {
-
-                        let newMove = Movement()
-                        if let moveDetail = move["move"] as? Dictionary<String, AnyObject> {
-                            if let moveURL = moveDetail["url"] as? String {
-                                newMove.URL = moveURL
-                                Alamofire.request(moveURL, method: .get).responseJSON(completionHandler: { (response) in
-                                    
-                                    let moveDict = response.result.value as? Dictionary<String, AnyObject>
-                                    
-                                    if let pp = moveDict?["pp"] as? Int {
-                                        newMove.pp = pp
-                                    }
-                                    
-                                    if let type = moveDict?["type"] as? Dictionary<String, AnyObject> {
-                                        if let typeName = type["name"] as? String {
-                                            newMove.type = typeName
-                                        }
-                                    }
-                                    
-                                    completed()
-                                })
-                            }
+                        if let slot = type["slot"] as? Int {
                             
-                            if let moveName = moveDetail["name"] as? String {
-                                newMove.name = moveName
+                            if slot == 1 {
+                                if let typeValue = type["type"]?["name"] as? String {
+                                    typeName = typeValue.capitalized + typeName
+                                }
+                                
+                            } else {
+                                if let typeValue = type["type"]?["name"] as? String {
+                                    typeName = typeName + "/" + typeValue.capitalized
+                                }
                             }
                         }
-                        self.movement.append(newMove)
+                    }
+                    
+                    self.type = typeName
+                }
+                
+                if let stats = dict["stats"] as? [Dictionary<String, AnyObject>] {
+                    
+                    for stat in stats {
+                        
+                        if let statType = stat["stat"]?["name"] as? String {
+                            
+                            switch statType {
+                                
+                                case "speed":
+                                    if let baseStat = stat["base_stat"] as? Int {
+                                        self.speed = baseStat
+                                    }
+                                    break;
+                                
+                                case "special-defense":
+                                    if let baseStat = stat["base_stat"] as? Int {
+                                        self.specialDefense = baseStat
+                                    }
+                                    break;
+                                
+                                case "special-attack":
+                                    if let baseStat = stat["base_stat"] as? Int {
+                                        self.specialAttack = baseStat
+                                    }
+                                    break;
+                                
+                                case "defense":
+                                    if let baseStat = stat["base_stat"] as? Int {
+                                        self.defense = baseStat
+                                    }
+                                    break;
+                                
+                                case "attack":
+                                    if let baseStat = stat["base_stat"] as? Int {
+                                        self.attack = baseStat
+                                    }
+                                    break;
+                                
+                                case "hp":
+                                    if let baseStat = stat["base_stat"] as? Int {
+                                        self.hp = baseStat
+                                    }
+                                    break;
+                                
+                                default:
+                                    // Do nothing
+                                    break;
+                            }
+                        }
                     }
                 }
-                completed()
-            })
+            }
             
-            completed()
+            completion()
         })
     }
 }
