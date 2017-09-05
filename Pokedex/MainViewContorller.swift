@@ -26,13 +26,11 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Configure Navigation Bar
-        guard let fontTitle = UIFont(name: "Pokemon Solid", size: 22) else { fatalError("Wrong font.") }
-        
+        // Configure Navigation Bar        
         self.navigationItem.title = APP_NAME
         self.navigationController?.navigationBar.titleTextAttributes = [
             NSForegroundColorAttributeName: UIColor.white,
-            NSFontAttributeName: fontTitle
+            NSFontAttributeName: AppStyles.Font.Title
         ]
         
         let musicButton = UIBarButtonItem(image: UIImage(named: "music"), style: .plain, target: self, action: #selector(musicButtonPressed(sender:)))

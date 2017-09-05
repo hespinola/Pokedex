@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PokemonDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class PokemonDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var segmentedController: UISegmentedControl!
     @IBOutlet weak var nameLbl: UILabel!
@@ -32,8 +32,6 @@ class PokemonDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var descriptionLbl: UILabel!
     @IBOutlet weak var nextEvolutionLbl: UILabel!
     @IBOutlet weak var currentEvo: UIImageView!
-    @IBOutlet weak var nextEvolutionImg: UIImageView!
-    @IBOutlet weak var divider: UITableView!
     
     var pokemon: Pokemon!
     
@@ -121,8 +119,6 @@ class PokemonDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             spAtk.isHidden = true
             spDef.isHidden = true
             speed.isHidden = true
-            
-            divider.isHidden = false
         }
     }
     
